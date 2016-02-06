@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
 
 app.get('/weather', function(req, res) {
 	// hard code for now
-	var lng = '-71.0377';
+	var lng = '-73.984511';
 	var lat = '42.3665';
 	var key = '02f7985b48f8f25a0b1eebbfa3e824cd';
 	var url = 'https://api.forecast.io/forecast/';
@@ -40,9 +40,9 @@ app.get('/weather', function(req, res) {
 app.get('/subway', function(req, res) {
 	// hard code for now
 	var mode = 'transit';
-	var origin = 'Maverick';
-	var dest = 'State_Street_Boston';
-	var key = 'AIzaSyCCAazPCKDKSmZAftmFd0jgveFQVjNCuVc';
+	var origin = 'place_id:ChIJN1ZOal1w44kR5IAo-Xm02vU'; //Maverick *use Google placeid finder 
+	var dest = 'place_id:ChIJ1QvXeoRw44kR_jMMN0I5To0';//State St. 
+	var key = 'AIzaSyAJFm6N6BEzYHLsdKwapx_43Ez1sD1Igmk'; // my api key doesn't work: AIzaSyCCAazPCKDKSmZAftmFd0jgveFQVjNCuVc
 	var url = 'https://maps.googleapis.com/maps/api/directions/json';
 
 	url += '?origin='+origin;
