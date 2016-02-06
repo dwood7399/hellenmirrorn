@@ -40,9 +40,9 @@ app.get('/weather', function(req, res) {
 app.get('/subway', function(req, res) {
 	// hard code for now
 	var mode = 'transit';
-	var origin = 'Columbus_Circle';
-	var dest = '159_West_25th_NewYork';
-	var key = 'AIzaSyAJFm6N6BEzYHLsdKwapx_43Ez1sD1Igmk';
+	var origin = 'Maverick';
+	var dest = 'State_Street_Boston';
+	var key = 'AIzaSyCCAazPCKDKSmZAftmFd0jgveFQVjNCuVc';
 	var url = 'https://maps.googleapis.com/maps/api/directions/json';
 
 	url += '?origin='+origin;
