@@ -24,9 +24,9 @@ var ClockView = Backbone.View.extend({
 		hour = time.getHours() === 12 ? 12 : hour;
 		var ampm = time.getHours() < 12 ? 'AM' : 'PM';
 		var minute = this.addZero(time.getMinutes());
-		var seconds = this.addZero(time.getSeconds());
+	//	var seconds = this.addZero(time.getSeconds());
 
-		var timeString = hour + ':' + minute + ':' + seconds;
+		var timeString = hour + ':' + minute ;
 		var $ampm = $('<span>').html(ampm);
 
 		this.$el.find('.time').html(timeString)
