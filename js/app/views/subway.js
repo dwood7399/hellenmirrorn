@@ -58,12 +58,12 @@ var SubwayView = Backbone.View.extend({
 			time = 'minutes';
 		}
 
-		var s = 'Train is ' + minutesAway + ' ' + time + ' away';
+		var s = 'Next train  in ' + minutesAway + ' ' + time;
 		return s;
 	},
 	getSubwayIcon: function(departure) {
 		var src = departure.transit_details.line.icon;
-
+		src = '/assets/train.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
 		return $('<img>').attr('src', src);
 	} 
 });
