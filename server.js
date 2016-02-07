@@ -42,7 +42,7 @@ app.get('/subway', function(req, res) {
 	var mode = 'transit';
 	var origin = 'place_id:ChIJN1ZOal1w44kR5IAo-Xm02vU'; //Maverick *use Google placeid finder 
 	var dest = 'place_id:ChIJ1QvXeoRw44kR_jMMN0I5To0';//State St. 
-	var key = 'AIzaSyAJFm6N6BEzYHLsdKwapx_43Ez1sD1Igmk'; // my api key doesn't work: AIzaSyCCAazPCKDKSmZAftmFd0jgveFQVjNCuVc
+	var key = 'AIzaSyCCAazPCKDKSmZAftmFd0jgveFQVjNCuVc'; // <- my key, his key ->  AIzaSyAJFm6N6BEzYHLsdKwapx_43Ez1sD1Igmk
 	var url = 'https://maps.googleapis.com/maps/api/directions/json';
 
 	url += '?origin='+origin;
@@ -82,5 +82,5 @@ app.get('/stocks', function(req, res) {
 });
 
 app.listen(port, function() {
-  console.log('BlackMirror is running on http://localhost:' + port);
+  console.log('HelenMirrorn is running on http://localhost:' + port);
 });
