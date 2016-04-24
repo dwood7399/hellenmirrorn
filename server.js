@@ -37,6 +37,7 @@ app.get('/weather', function(req, res) {
 	});
 });
 
+/*
 app.get('/subway', function(req, res) {
 	// hard code for now
 	var mode = 'transit';
@@ -57,6 +58,8 @@ app.get('/subway', function(req, res) {
   });
 
 });
+*/
+
 
 app.get('/mbta', function(req, res) {
 	// hard code for now
