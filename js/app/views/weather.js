@@ -24,7 +24,7 @@ var WeatherView = Backbone.View.extend({
 		var icon = d.currently.icon;
 		var temp = this.formatTemp(d.currently.temperature);
 
-		this.$el.html(temp + '&deg F').addClass(icon);
+		this.$el.html(temp + '&deg').addClass(icon);
 	},
 	formatTemp: function(i) {
 		return i.toString().split('.')[0];
