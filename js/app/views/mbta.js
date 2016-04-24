@@ -38,7 +38,12 @@ var MBTAView = Backbone.View.extend({
 		var time2;
 		
 		var minutesAway = d1 / 60;
-		minutesAway =  Math.floor(minutesAway)
+		if (minutesAway === 0) {
+			minutesAway = 'Now'
+		} else {
+			minutesAway =  Math.floor(minutesAway)	
+		}
+		
 		
 		var minutesAway2 = d2 / 60;
 		minutesAway2 =  Math.floor(minutesAway2)
@@ -47,6 +52,8 @@ var MBTAView = Backbone.View.extend({
 		
 		if ( minutesAway === 1 ) {
 			time = 'min';
+		} else if (minutesAway ===0) {
+			time ='';
 		} else {
 			time = 'mins';
 		}
