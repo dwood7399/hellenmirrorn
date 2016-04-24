@@ -13,11 +13,11 @@ var MBTAView = Backbone.View.extend({
 
 		req.done(function(d) { self.render(d); });
 
-		/* Update every minute */
+		/* Update every second */
 		setInterval(function() { 
 			var req = $.get('/mbta');
 			req.done(function(d) { self.render(d); });
-		}, 1000*60);
+		}, 1000*1);
 	},
 	render: function(d) {
 		d = JSON.parse(d.body);
