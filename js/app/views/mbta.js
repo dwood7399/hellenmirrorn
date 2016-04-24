@@ -35,6 +35,7 @@ var MBTAView = Backbone.View.extend({
 
 	getMBTAString: function(d1,d2,d3) {
 		var time;
+		var time2;
 		
 		var minutesAway = d1 / 60;
 		minutesAway =  Math.floor(minutesAway)
@@ -45,16 +46,20 @@ var MBTAView = Backbone.View.extend({
 		minutesAway3 =  Math.floor(minutesAway3)
 		
 		if ( minutesAway === 1 ) {
-			time = 'minute';
+			time = 'min';
 		} else {
-			time = 'minutes';
+			time = 'mins';
 		}
-
-		var s = 'Next train  in ' + minutesAway + ' ' + time +'. Then, ' +  minutesAway2 + ' and ' + minutesAway3 +'.';
+		if ( minutesAway3 === 1 ) {
+			time2 = 'min';
+		} else {
+			time2 = 'mins';
+		}
+		var s = '<span class="bold">' + minutesAway + ' ' + time +'</span> </br>' +  minutesAway2 + ', ' + minutesAway3 +' ' + time2;
 		return s;
 	},
 	getMBTAIcon: function(departure2) {
-		var src = '/assets/train.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
+		var src = '/assets/blue-line-icon.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
 		return $('<img>').attr('src', src);
 	} 
 });
