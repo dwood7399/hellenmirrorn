@@ -1,3 +1,4 @@
+
 define([
   'jquery',
   'underscore',
@@ -9,15 +10,35 @@ define([
 var ClockView = Backbone.View.extend({
 	initialize: function() {
 		this.today();
+		this.thedate();
 		this.ticktock();
 		setInterval( this.ticktock.bind(this), 1000 );
 	},
 	today: function() {
-		var time = new Date();
-		time = time.toDateString();
 
-		this.$el.find('.date').html(time);
+		var day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][(new Date()).getDay()]		
+
+		this.$el.find('.day').html(day);
+
 	},
+	
+	thedate: function() {
+
+		var m_names = new Array("Jan", "Feb", "March", 
+		"April", "May", "Jun", "Jul", "Aug", "Sept", 
+		"Oct", "Nov", "Dec");
+		
+		var d = new Date();
+		var curr_date = d.getDate();
+		var curr_month = d.getMonth();
+		var curr_year = d.getFullYear();
+		var thedate = m_names[curr_month] 
+		+ " " + curr_date + ", " + curr_year;
+			
+		this.$el.find('.date').html(thedate);
+
+	},
+	
 	ticktock: function() {
 		var time = new Date();
 		var hour = time.getHours() % 12;
