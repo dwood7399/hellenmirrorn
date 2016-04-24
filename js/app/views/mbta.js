@@ -17,7 +17,7 @@ var MBTAView = Backbone.View.extend({
 		setInterval(function() { 
 			var req = $.get('/mbta');
 			req.done(function(d) { self.render(d); });
-		}, 1000*1);
+		}, 1000*5);
 	},
 	render: function(d) {
 		d = JSON.parse(d.body);
@@ -26,11 +26,11 @@ var MBTAView = Backbone.View.extend({
 		var departure2= d.mode[0].route[0].direction[0].trip[1].pre_away;
 		var departure3= d.mode[0].route[0].direction[0].trip[2].pre_away;
 
-		var $mbtaIcon = this.getMBTAIcon(departure2);
+	//	var $mbtaIcon = this.getMBTAIcon(departure2);
     		var mbtaString = this.getMBTAString(departure1,departure2,departure3);
 
 		this.$el.html(mbtaString);
-		this.$el.prepend($mbtaIcon);
+	//	this.$el.prepend($mbtaIcon);
 	},
 
 	getMBTAString: function(d1,d2,d3) {
@@ -38,10 +38,10 @@ var MBTAView = Backbone.View.extend({
 		var time2;
 		
 		var minutesAway = d1 / 60;
+		minutesAway =  Math.floor(minutesAway)	
+
 		if (minutesAway === 0) {
 			minutesAway = 'Now'
-		} else {
-			minutesAway =  Math.floor(minutesAway)	
 		}
 		
 		
@@ -52,7 +52,7 @@ var MBTAView = Backbone.View.extend({
 		
 		if ( minutesAway === 1 ) {
 			time = 'min';
-		} else if (minutesAway ===0) {
+		} else if (minutesAway === 'Now') {
 			time ='';
 		} else {
 			time = 'mins';
@@ -62,13 +62,16 @@ var MBTAView = Backbone.View.extend({
 		} else {
 			time2 = 'mins';
 		}
-		var s = '<span class="bold">' + minutesAway + ' ' + time +'</span> </br>' +  minutesAway2 + ', ' + minutesAway3 +' ' + time2;
+		var icon =  '<img src="/assets/blue-line-icon.png">'		
+		var s = '<span class="bold">' + icon + minutesAway + ' ' + time +'</span> </br>' +  minutesAway2 + ', ' + minutesAway3 +' ' + time2;
 		return s;
 	},
+/*
 	getMBTAIcon: function(departure2) {
 		var src = '/assets/blue-line-icon.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
-		return $('<img>').attr('src', src);
+		var icon = return $('<img>').attr('src', src);
 	} 
+*/
 });
 
 return MBTAView;
