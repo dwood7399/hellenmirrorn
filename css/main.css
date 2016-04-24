@@ -103,7 +103,9 @@ html, body {
   color: white;
   padding: 20px;
   padding-top: 40px;
-  padding-right: 40px; }
+  padding-right: 40px;
+  font-size: 70px;
+  font-weight: 300; }
 
 body {
   opacity: 0; }
@@ -113,35 +115,42 @@ body {
     -moz-transition: opacity 0.2s;
     transition: opacity 0.2s; }
 
+span.bold {
+  font-weight: 700; }
+
 .weather, .subway {
   margin-bottom: 60px; }
 
+.clock .day {
+  font-weight: bold; }
+
 .clock .date {
-  font-size: 52px;
-  margin-bottom: 20px; }
+  margin-bottom: 65px; }
 
 .clock .time {
-  font-size: 128px;
+  font-size: 174px;
   font-weight: bold;
-  margin-bottom: 15px; }
+  margin-bottom: 65px; }
   .clock .time > span {
-    font-size: 24px;
+    font-size: 49px;
     margin-left: 5px;
-    font-weight: normal; }
+    padding-bottom: 126px;
+    font-weight: 300 !important; }
 
 .weather {
-  font-size: 100px; }
+  font-weight: bold;
+  margin-bottom: 65px; }
   .weather:before {
     margin-right: 20px;
     font-family: 'icomoon'; }
 
-.subway {
-  font-size: 52px; }
-  .subway img {
-    margin-right: 20px; }
+.mbta span.bold {
+  float: right; }
+.mbta img {
+  margin-right: 30px;
+  margin-bottom: 10px; }
 
 .news h3 {
-  font-size: 48px;
   text-decoration: underline; }
 .news ul {
   position: relative;
