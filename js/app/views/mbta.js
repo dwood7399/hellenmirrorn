@@ -6,51 +6,35 @@ define([
 
 "use strict";
 
-var SubwayView = Backbone.View.extend({
+var MBTAView = Backbone.View.extend({
 	initialize: function() {
 		var self = this;
-		var req = $.get('/subway');
+		var req = $.get('/mbta');
 
 		req.done(function(d) { self.render(d); });
 
 		/* Update every minute */
 		setInterval(function() { 
-			var req = $.get('/subway');
+			var req = $.get('/mbta');
 			req.done(function(d) { self.render(d); });
 		}, 1000*60);
 	},
 	render: function(d) {
 		d = JSON.parse(d.body);
+		
+		var departure = d.mode[0].route[0].direction[0].trip[0].pre_away;
 
-		var departure = d.routes[0].legs[0];
-		var firstStep = this.getFirstStep(departure);
+		var $mbtaIcon = this.getMBTAIcon(departure);
+    		var mbtaString = this.getMBTAString(departure);
 
-		var $subwayIcon = this.getSubwayIcon(firstStep);
-		var subwayString = this.getSubwayString(firstStep);
-
-		this.$el.html(subwayString);
-		this.$el.prepend($subwayIcon);
+		this.$el.html(mbtaString);
+		this.$el.prepend($mbtaIcon);
 	},
-	getFirstStep: function(departure) {
-		var steps = departure.steps;
-		var l = steps.length;
 
-		for ( var i = 0; i < l; i++ ) {
-			if ( steps[i].travel_mode === 'TRANSIT' ) {
-				return steps[i];
-			}
-		}
-	},
-	getSubwayString: function(step) {
+	getMBTAString: function(departure) {
 		var time;
-
-		var departure_time = step.transit_details.departure_time;
-	
-		var nextTrain = new Date(departure_time.value*1000).getMinutes();
-		var currentTime = new Date().getMinutes();
-		var minutesAway = nextTrain - currentTime;
-
-		minutesAway = minutesAway <= -1 ? 60 % minutesAway : minutesAway;
+		var minutesAway = departure / 60;
+		minutesAway =  Math.floor(minutesAway)
 
 		if ( minutesAway === 1 ) {
 			time = 'minute';
@@ -61,13 +45,12 @@ var SubwayView = Backbone.View.extend({
 		var s = 'Next train  in ' + minutesAway + ' ' + time;
 		return s;
 	},
-	getSubwayIcon: function(departure) {
-		var src = departure.transit_details.line.icon;
-		src = '/assets/train.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
+	getMBTAIcon: function(departure) {
+		var src = '/assets/train.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
 		return $('<img>').attr('src', src);
 	} 
 });
 
-return SubwayView;
+return MBTAView;
 
 });

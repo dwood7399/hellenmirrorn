@@ -60,16 +60,12 @@ app.get('/subway', function(req, res) {
 
 app.get('/mbta', function(req, res) {
 	// hard code for now
-	var mode = 'transit';
-	var origin = 'place_id:ChIJN1ZOal1w44kR5IAo-Xm02vU'; //Maverick *use Google placeid finder 
-	var dest = 'place_id:ChIJ1QvXeoRw44kR_jMMN0I5To0';//State St. 
-	var key = 'AIzaSyAJFm6N6BEzYHLsdKwapx_43Ez1sD1Igmk'; // <- his key, my key ->   AIzaSyCCAazPCKDKSmZAftmFd0jgveFQVjNCuVc
-	var url = 'https://maps.googleapis.com/maps/api/directions/json';
+	var stopid = '70045';//MBTA Stop ID (Maverick = 7005). 
+	var apikey = 'wX9NwuHnZU2ToO7GmGR9uw'; // <- public API key, get my own
+	var url = 'http://realtime.mbta.com/developer/api/v2/predictionsbystop?format=json';
 
-	url += '?origin='+origin;
-	url += '&destination='+dest;
-  url += '&mode='+mode;
-  url += '&key='+key;
+	url += '&api_key='+apikey;
+	url += '&stop='+stopid;
 
   request(url, function(err, d) {
   	res.writeHead(200, {"Content-Type": "application/json"});
