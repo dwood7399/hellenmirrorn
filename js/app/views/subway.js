@@ -63,7 +63,7 @@ var SubwayView = Backbone.View.extend({
 	},
 	getSubwayIcon: function(departure) {
 		var src = departure.transit_details.line.icon;
-		src = '/assets/train.png'; //MBTA has no icons, try switching to generic icons or use manual iceon (needs new image)
+		src = '/assets/train.png'; //MBTA has no icons, try switching to generic icons or use manual icon (needs new image)
 		return $('<img>').attr('src', src);
 	} 
 });
