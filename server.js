@@ -64,7 +64,7 @@ app.get('/subway', function(req, res) {
 app.get('/mbta', function(req, res) {
 	// hard code for now
 	var stopid = '70045';//MBTA Stop ID (Maverick = 7005). 
-	var apikey = 'wX9NwuHnZU2ToO7GmGR9uw'; // <- public API key, get my own
+	var apikey = 'VJKitNU0VUaWrOsGfPhBjQ'; // <-personal key for dwood7399
 	var url = 'http://realtime.mbta.com/developer/api/v2/predictionsbystop?format=json';
 
 	url += '&api_key='+apikey;
