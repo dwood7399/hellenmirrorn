@@ -3,7 +3,8 @@ require.config({
 	paths: {
 		"jquery": "../lib/jquery.min",
 		"underscore": "../lib/underscore",
-		"backbone": "../lib/backbone"
+		"backbone": "../lib/backbone",
+		"chartjs":"../../node_modules/chart.js"
 	},
 	shim: {
 		jquery: {
@@ -25,8 +26,9 @@ require.config({
 require([
 	"jquery",
 	"underscore",
-	"backbone"
-], function($, _, Backbone) {
+	"backbone",
+	"chartjs"
+], function($, _, Backbone,Chart) {
 
 	require(['app'], function() {});
 
