@@ -17,7 +17,7 @@ var MBTAView = Backbone.View.extend({
 		setInterval(function() { 
 			var req = $.get('/mbta');
 			req.done(function(d) { self.render(d); });
-		}, 1000*5);
+		}, 1000*10);
 	},
 	render: function(d) {
 		d = JSON.parse(d.body);
