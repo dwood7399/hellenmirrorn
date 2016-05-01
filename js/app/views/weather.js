@@ -1,8 +1,9 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone) {
+  'backbone',
+  'chartjs'
+], function($, _, Backbone, Chart) {
 
 "use strict";
 

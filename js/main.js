@@ -4,7 +4,7 @@ require.config({
 		"jquery": "../lib/jquery.min",
 		"underscore": "../lib/underscore",
 		"backbone": "../lib/backbone",
-		"chartjs":"../../node_modules/chart.js"
+		"chartjs":"../../node_modules/chart.js/dist/Chart.min"
 	},
 	shim: {
 		jquery: {
@@ -17,6 +17,10 @@ require.config({
 		backbone: {
 		  deps: ["jquery", "underscore"],
 		  exports: "Backbone"
+		},
+		chartjs: {
+		  deps: ["jquery","underscore", "backbone"],
+		  exports: "Chart"
 		}
 	},
 	urlArgs: "bust=" + (new Date()).getTime(),
@@ -28,8 +32,7 @@ require([
 	"underscore",
 	"backbone",
 	"chartjs"
-], function($, _, Backbone,Chart) {
-
+], function($, _, Backbone, Chart) {
 	require(['app'], function() {});
 
 });
