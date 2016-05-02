@@ -23,15 +23,110 @@ var WeatherView = Backbone.View.extend({
 	render: function(d) {
 		d = JSON.parse(d.body);
 		var icon = d.currently.icon;
-		var temp = this.formatTemp(d.currently.temperature);
+		var temp = this.formatTemp(d.currently.apparentTemperature);
+		var hourlyTemp = [];
+		var hourlyPrecip = [];
+		var hourlyLabels = [];
+		for (var i = 0; i < 13; i++) {
+			hourlyTemp.push(this.formatTemp(d.hourly.data[i].apparentTemperature));
+		}
+		for (var i = 0; i < 13; i++) {
+			hourlyPrecip.push(d.hourly.data[i].precipProbability);
+		}
+		for (var i = 0; i < 13; i++) {
+			hourlyLabels.push(this.formatHours(d.hourly.data[i].time));
+		}
 
-		this.$el.html(temp + '&deg').addClass(icon);
+// 	 		var summary = d.hourly.summary;
+		this.$el.html(temp + '&deg 	</br><canvas style="font-family: "Roboto Condensed";" id="forecast" width="400" height="200"></canvas>').addClass(icon);
+		
+		var ctx = document.getElementById("forecast");
+		var myChart = new Chart(ctx, {
+		    type: 'line',
+		    data: {
+		        labels: hourlyLabels,
+		        datasets: [
+		        {
+			        	yAxisID: "y-axis-temp",
+		            data: hourlyTemp,
+		            borderColor: "#D84414",
+					lineTension: 5,
+					borderCapStyle: "round",
+		            	pointBorderColor: "#D84414",
+		            	pointStyle: "dash",
+		        },
+		        {
+			        	yAxisID: "y-axis-precip",			        
+		            data: hourlyPrecip,
+		            backgroundColor: "#0A5299",
+
+		            	borderCapStyle: "round",
+		            	borderColor: "#0C3D86",
+		            	pointRadius: 0,
+		            	pointBorderColor: "#0C3D86",
+		            	pointStyle: "dash"
+
+		        }
+		       
+		        ]
+		    },
+		    options: {
+			    fontFamily: "'Roboto Condensed'",
+			    fullWidth: false,
+			    responsive: false,
+			    legend: {
+				    display: false
+			    },
+
+		        scales: {
+		            yAxes: [
+		            			{
+			            			id: "y-axis-temp",
+								ticks: {
+									beginAtZero:false,
+									stepSize: 5								
+								}
+							},
+		            			{
+			            			id: "y-axis-precip",
+			            			position: "right",
+								ticks: {
+									beginAtZero:true,
+									min:0,
+									max: 1,
+									stepSize: .5
+									
+								}
+							}
+		            ]
+		        }
+		    }
+		});
+		
+		
 	},
+
+
+
 	formatTemp: function(i) {
 		return i.toString().split('.')[0];
-	}
+	},
+	
+	formatHours: function(timestamp) {
+			var date = new Date(timestamp * 1000);
+			var hours = date.getHours();
+			var labels = ((hours + 11) % 12 + 1);
+			var suffix = hours >= 12 ? " pm":" am"; 
+			return labels + suffix;
+	},	
+	
+
 });
+
+
 
 return WeatherView;
 
 });
+
+
