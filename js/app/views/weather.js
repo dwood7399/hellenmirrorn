@@ -50,34 +50,32 @@ var WeatherView = Backbone.View.extend({
 			        	yAxisID: "y-axis-temp",
 		            data: hourlyTemp,
 		            borderColor: "#D84414",
-					lineTension: 5,
-					borderCapStyle: "round",
 		            	pointBorderColor: "#D84414",
-		            	pointStyle: "dash",
 		        },
 		        {
 			        	yAxisID: "y-axis-precip",			        
 		            data: hourlyPrecip,
 		            backgroundColor: "#0A5299",
-
-		            	borderCapStyle: "round",
 		            	borderColor: "#0C3D86",
-		            	pointRadius: 0,
 		            	pointBorderColor: "#0C3D86",
-		            	pointStyle: "dash"
 
 		        }
 		       
 		        ]
 		    },
 		    options: {
+			    events:false,
 			    fontFamily: "'Roboto Condensed'",
 			    fullWidth: false,
 			    responsive: false,
 			    legend: {
 				    display: false
 			    },
-
+				elements: {
+					point: {
+						radius:0
+					}
+				},
 		        scales: {
 		            yAxes: [
 		            			{
@@ -99,10 +97,12 @@ var WeatherView = Backbone.View.extend({
 								}
 							}
 		            ]
-		        }
+		        },
+		        
 		    }
 		});
-		
+
+
 		
 	},
 
