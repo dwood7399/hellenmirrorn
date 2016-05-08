@@ -124,13 +124,18 @@ span.bold {
 .clock .day {
   font-weight: bold; }
 
-.clock .date {
+.clock {
   margin-bottom: 65px; }
+  .clock .dateLine {
+    font-size: 49px; }
+    .clock .dateLine .day {
+      padding-right: 15px;
+      text-align: left; }
 
 .clock .time {
   font-size: 174px;
   font-weight: bold;
-  margin-bottom: 65px; }
+  margin-bottom: 0px; }
   .clock .time > span {
     font-size: 49px;
     margin-left: 5px;

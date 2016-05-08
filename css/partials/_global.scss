@@ -29,14 +29,22 @@ span.bold {
 	font-weight: bold;
 }
 
-.clock .date {
+.clock {
 	margin-bottom: 65px;
+	
+	.dateLine {
+		font-size: 49px;
+		.day {
+			padding-right: 15px;
+			text-align: left;
+		}
+	}
 }
 
 .clock .time {
 	font-size: 174px;
 	font-weight: bold;
-	margin-bottom: 65px;
+	margin-bottom: 0px;
 	> span {
 		font-size: 49px;
 		margin-left: 5px;
