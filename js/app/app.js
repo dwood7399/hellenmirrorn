@@ -1,18 +1,18 @@
 define([
   'jquery',
-  'views/news',
+//   'views/news',
   'views/clock',
 //   'views/subway',
     'views/mbta',
   'views/stocks',
   'views/weather',
-], function($, NewsView, ClockView, MBTAView, StocksView, WeatherView) {
+], function($, ClockView, MBTAView, StocksView, WeatherView) {
 
 "use strict";
 
 $(document).ready(function() {
 
-	new NewsView({ el: $('.news') });
+// 	new NewsView({ el: $('.news') });
 	new ClockView({ el: $('.clock') });
 // 	new SubwayView({ el: $('.subway') });
 	new MBTAView({ el: $('.mbta') });
