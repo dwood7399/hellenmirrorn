@@ -63,7 +63,7 @@ var MBTAView = Backbone.View.extend({
 			time2 = 'mins';
 		}
 		var icon =  '<img src="/assets/blue-line-icon.png">'		
-		var s = '<span class="bold">' + icon + minutesAway + ' ' + time +'</span> </br>' +  minutesAway2 + ', ' + minutesAway3 +' ' + time2;
+		var s = '<div class="nextTrain">' + icon + minutesAway + ' <span class="thenTrains"> ' + time + '</span></div><div class="thenTrains">' +  minutesAway2 + ', ' + minutesAway3 + '</div>';
 		return s;
 	},
 /*
