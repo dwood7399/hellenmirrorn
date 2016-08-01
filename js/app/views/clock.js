@@ -43,15 +43,15 @@ var ClockView = Backbone.View.extend({
 		var time = new Date();
 		var hour = time.getHours() % 12;
 		hour = time.getHours() === 12 ? 12 : hour;
-		var ampm = time.getHours() < 12 ? 'am' : 'am';
+		//var ampm = time.getHours() < 12 ? 'am' : 'am';
 		var minute = this.addZero(time.getMinutes());
 	//	var seconds = this.addZero(time.getSeconds());
 
 		var timeString = hour + ':' + minute ;
-		var $ampm = $('<sup>').html(ampm);
+		//var $ampm = $('<sup>').html(ampm);
 
 		this.$el.find('.time').html(timeString)
-			.append($ampm);
+			//.append($ampm);
 	},
 	addZero: function(i) {
 		if (i < 10) {
