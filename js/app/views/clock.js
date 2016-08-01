@@ -16,7 +16,7 @@ var ClockView = Backbone.View.extend({
 	},
 	today: function() {
 
-		var day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][(new Date()).getDay()]		
+		var day = ["Sunday,","Monday,","Tueday,","Wednesday,","Thursday,","Friday","Saturday,"][(new Date()).getDay()]		
 
 		this.$el.find('.day').html(day);
 
@@ -33,7 +33,7 @@ var ClockView = Backbone.View.extend({
 		var curr_month = d.getMonth();
 		var curr_year = d.getFullYear();
 		var thedate = m_names[curr_month] 
-		+ " " + curr_date + ", " + curr_year;
+		+ " " + curr_date;
 			
 		this.$el.find('.date').html(thedate);
 
