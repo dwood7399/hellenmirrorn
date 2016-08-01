@@ -26,14 +26,13 @@ span.bold {
 }
 
 .clock .day {
-	font-weight: bold;
 }
 
 .clock {
 	margin-bottom: 65px;
 	
 	.dateLine {
-		font-size: 36px;
+		font-size: 22px;
 		margin-bottom: 12px;
 		.day {
 // 			padding-right: 5px;
@@ -47,7 +46,7 @@ span.bold {
 	font-weight: bold;
 	margin-bottom: 0px;
 	> sup {
-		font-size: 36px;
+		font-size: 22px;
 		margin-left: 5px;
 // 		padding-bottom: 126px;
 vertical-align: super;
@@ -97,7 +96,7 @@ vertical-align: super;
 	}
 	
 	.thenTrains {
-		font-size: 36px;
+		font-size: 22px;
 		font-weight: 300;
 		margin-left: 40px;
 // 		margin-top: 12px;
@@ -116,7 +115,7 @@ vertical-align: super;
 			right: 0;
 			top: 20px;
 			opacity: 0;
-			font-size: 36px;
+			font-size: 22px;
 			position: absolute;
 			@include transition(opacity 0.5s);
 			&.active {
