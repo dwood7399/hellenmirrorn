@@ -69,22 +69,37 @@ vertical-align: super;
 
 .mbta {
 	span.bold {
-		float: right;
 		
 	}
-	img {
-		margin-right: 30px;
-		margin-bottom: 5px;
+	
+
+	.nextTrainWrap {
+
 	}
 	
 	.nextTrain {
 		font-size: 70px;
 		font-weight: bold;
+				:before {
+				content: url('/assets/mbta-icon-blueline-3.png');
+				float: left;
+				margin-right: 20px;
+				width: 20px;
+				vertical-align: bottom;
+				height: 100%;
+				margin-top: 30px;
+		
+		}
+		
+		.thenTrains {
+			margin-left: 0px!important;
+		}
 	}
 	
 	.thenTrains {
 		font-size: 36px;
 		font-weight: 300;
+		margin-left: 40px;
 // 		margin-top: 12px;
 	}
 	
