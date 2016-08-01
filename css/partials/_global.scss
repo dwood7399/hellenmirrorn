@@ -46,22 +46,25 @@ span.bold {
 	font-size: 70px;
 	font-weight: bold;
 	margin-bottom: 0px;
-	> span {
+	> sup {
 		font-size: 36px;
 		margin-left: 5px;
-		padding-bottom: 126px;
+// 		padding-bottom: 126px;
+vertical-align: super;
 		font-weight: 300!important;
 	}
 }
 
 .weather {
 	font-weight: bold;
-	margin-bottom: 65px;
+	margin-bottom: 49px;
 	&:before {
 		margin-right: 20px;
 		font-family: 'icomoon';
 	}
-	
+	canvas {
+		margin-top: 49px;
+	}
 }
 
 .mbta {
