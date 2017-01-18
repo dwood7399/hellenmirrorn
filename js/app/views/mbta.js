@@ -25,16 +25,15 @@ var MBTAView = Backbone.View.extend({
 		var departure1= d.mode[0].route[0].direction[0].trip[0].pre_away;
 		var departure2= d.mode[0].route[0].direction[0].trip[1].pre_away;
 		var departure3= d.mode[0].route[0].direction[0].trip[2].pre_away;
-		var departure4= d.mode[0].route[0].direction[0].trip[3].pre_away;
 
 	//	var $mbtaIcon = this.getMBTAIcon(departure2);
-    		var mbtaString = this.getMBTAString(departure1,departure2,departure3,departure4);
+    		var mbtaString = this.getMBTAString(departure1,departure2,departure3);
 
 		this.$el.html(mbtaString);
 	//	this.$el.prepend($mbtaIcon);
 	},
 
-	getMBTAString: function(d1,d2,d3,d4) {
+	getMBTAString: function(d1,d2,d3) {
 		var time;
 		var time2;
 		
@@ -50,8 +49,7 @@ var MBTAView = Backbone.View.extend({
 		minutesAway2 =  Math.floor(minutesAway2)
 		var minutesAway3 = d3 / 60;
 		minutesAway3 =  Math.floor(minutesAway3)
-		var minutesAway4 = d4 / 60;
-		minutesAway4 =  Math.floor(minutesAway4)
+
 				
 		if ( minutesAway === 1 ) {
 			time = 'min';
@@ -65,7 +63,7 @@ var MBTAView = Backbone.View.extend({
 		} else {
 			time2 = 'mins';
 		}
-		var s =  '<div class="trainTimeWrap"><div class="nextTrain">' + minutesAway + ' <span class="thenTrains"> ' + time + '</span></div><div class="thenTrains">' +  minutesAway2 + ', ' + minutesAway3 + ', ' + minutesAway4 +'</div></div>';
+		var s =  '<div class="trainTimeWrap"><div class="nextTrain">' + minutesAway + ' <span class="thenTrains"> ' + time + '</span></div><div class="thenTrains">' +  minutesAway2 + ', ' + minutesAway3  +'</div></div>';
 		return s;
 	},
 /*
