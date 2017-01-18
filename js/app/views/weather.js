@@ -31,14 +31,14 @@ var WeatherView = Backbone.View.extend({
 			hourlyTemp.push(this.formatTemp(d.hourly.data[i].apparentTemperature));
 		}
 		for (var i = 0; i < 13; i++) {
-			hourlyPrecip.push(d.hourly.data[i].precipProbability);
+			hourlyPrecip.push(d.hourly.data[i].precipProbability*100);
 		}
 		for (var i = 0; i < 13; i++) {
 			hourlyLabels.push(this.formatHours(d.hourly.data[i].time));
 		}
 
 // 	 		var summary = d.hourly.summary;
-		this.$el.html(temp + '&deg 	</br><canvas style="font-family: "Roboto Condensed";" id="forecast" width="400" height="200"></canvas>').addClass(icon);
+		this.$el.html(temp + '&deg 	</br><canvas style="font-family: Roboto Condensed;" id="forecast" width="400" height="200"></canvas>').addClass(icon);
 		
 		var ctx = document.getElementById("forecast");
 		var myChart = new Chart(ctx, {
@@ -49,13 +49,13 @@ var WeatherView = Backbone.View.extend({
 		        {
 			        	yAxisID: "y-axis-temp",
 		            data: hourlyTemp,
-		            borderColor: "#D84414",
-		            	pointBorderColor: "#D84414",
+		            borderColor: "#fff",
+		            	pointBorderColor: "#fff",
 		        },
 		        {
 			        	yAxisID: "y-axis-precip",			        
 		            data: hourlyPrecip,
-		            backgroundColor: "#0A5299",
+		            backgroundColor: "#0C3D86",
 		            	borderColor: "#0C3D86",
 		            	pointBorderColor: "#0C3D86",
 
@@ -68,6 +68,7 @@ var WeatherView = Backbone.View.extend({
 			    fontFamily: "'Roboto Condensed'",
 			    fullWidth: false,
 			    responsive: false,
+			    tension: .7,			    
 			    legend: {
 				    display: false
 			    },
@@ -80,32 +81,59 @@ var WeatherView = Backbone.View.extend({
 		            yAxes: [
 		            			{
 			            			id: "y-axis-temp",
+//			            			position: "right",
 								ticks: {
-									beginAtZero:false,
-									stepSize: 5								
+// 									beginAtZero:false,
+									stepSize: 5,	
+									fontColor: "#fff",
+									fontSize: 22,
+									fontFamily: "'Roboto Condensed'",
+									fontStyle:"light",
+									callback: function(value) {
+						               return value + "°"
+						           }					
 								}
 							},
 		            			{
 			            			id: "y-axis-precip",
 			            			position: "right",
 								ticks: {
+									display: false,
 									beginAtZero:true,
 									min:0,
-									max: 1,
-									stepSize: .5
+									max: 100,
+									stepSize: 50,
+									fontStyle:"light",
+									fontFamily: "'Roboto Condensed'",
+									fontColor: "#0C3D86",
+									callback: function(value) {
+						               return value + "%"
+						           }
 									
 								}
 							}
+		            ],
+		            
+		            xAxes: [			            
+			            {
+				            ticks: {
+					            fontColor: "#fff",
+								autoSkipPadding: 20,
+								fontFamily: "'Roboto Condensed'",
+								maxRotation: 0,
+								labelOffset: 10					           // unit: "hour"
+			            	},
+			            	
+			            	gridLines: {
+			            	}
+			            }
 		            ]
-		        },
-		        
+		        },    
 		    }
-		});
 
-
-		
+		    
+		});		
 	},
-
 
 
 	formatTemp: function(i) {
