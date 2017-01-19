@@ -19,8 +19,8 @@ app.get('/', function(req, res) {
 
 app.get('/weather', function(req, res) {
 	// hard code for now
-	var lng = '-71.0376';
-	var lat = '42.3664';
+	var lng = '-71.0373';
+	var lat = '42.3665';
 	var key = '02f7985b48f8f25a0b1eebbfa3e824cd';
 	var url = 'https://api.forecast.io/forecast/';
 
