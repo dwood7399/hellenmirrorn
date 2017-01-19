@@ -4,7 +4,18 @@ var app = express();
 
 // set the port of our application
 // process.env.PORT lets the port be set by third party
-var port = process.env.PORT || 8080;
+//var port = process.env.PORT || 8080;
+
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+//var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+ 
+/*
+server.listen(port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + port )
+});
+*/
+
+
 
 // set the view engine to ejs but use html
 app.engine('html', require('ejs').renderFile);
